@@ -10,7 +10,7 @@ def carregar_dados():
     return df
 
 def carregar_dados_limpos():
-    return pd.read_csv(IMPORTAR_CSV2, sep=";", dtype={"CL_FHL": str, "CL_EC": str, "CO_ID": str, "CL_ID": str, "PR_ID": str})
+    return pd.read_csv(IMPORTAR_CSV2, sep=";", dtype={"CL_FHL": float, "CL_EC": str, "CO_ID": str, "CL_ID": str, "PR_ID": str})
 
 if __name__ == "__main__":
     df = carregar_dados()
