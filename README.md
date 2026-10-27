@@ -12,4 +12,4 @@ Etapa 02
 
 Iniciar o desenvolvimento do código para carregamento dos dados
 - importar o CSV, para dentro do arquivo python 
-- Gerar a variável de 
+- Gerar a variável

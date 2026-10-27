@@ -3,6 +3,8 @@ import pandas as pd
 
 from carrega_dados import carregar_dados
 
+EXPORTAR_CSV = "dados_limpos.csv"
+
 
 def remover_nulos(df, colunas=None):
     return df.dropna(subset=colunas)
@@ -60,3 +62,13 @@ if __name__ == "__main__":
 
     print(f"\nRegistros duplicados removidos: {duplicados_removidos}")
     print(f"Total de registros restantes: {len(df)}")
+
+df.to_csv(
+    df.to_csv(
+        EXPORTAR_CSV,
+        sep=";",
+        index=False,
+        encoding="utf-8-sig",
+        date_format="%d/%m/%Y",
+    )
+)
