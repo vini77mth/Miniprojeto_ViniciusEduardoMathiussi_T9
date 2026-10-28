@@ -7,15 +7,17 @@ from carrega_dados import carregar_dados_limpos
 
 from formatacao import console, numero_br
 
+numero_filhos = "CL_FHL"
+
 
 def resumo_varejo(df):
     total_registros = len(df)
     total_clientes = df["CL_ID"].nunique()
     total_produtos = df["PR_ID"].nunique()
     total_compras = df["CO_ID"].nunique()
-    media_filhos = df["CL_FHL"].mean()
-    
-
+    media_filhos = df[numero_filhos].mean()
+    media_filhos = round(media_filhos, 2)
+    compras_por_numero_filhos = df.groupby(numero_filhos)["CO_ID"].nunique().reset_index()
 
     texto =(
          
@@ -23,7 +25,8 @@ def resumo_varejo(df):
        f"[bold] Total de Clientes: [/] { numero_br(total_clientes)}\n"
        f"[bold] Total de Produtos: [/] { numero_br(total_produtos)}\n"
        f"[bold] Total de Compras: [/] { numero_br(total_compras)}\n"
-       f"[bold] Média de Filhos: [/] { numero_br(media_filhos)}\n"
+       f"[bold] Média de Filhos: [/] {(media_filhos)}\n"
+       f"[bold] Compras por Número de Filhos: \n [/] { compras_por_numero_filhos.to_string(index=False) }\n"
 )
     console.print(Panel(texto, title="Resumo Varejo", expand=False))
 
